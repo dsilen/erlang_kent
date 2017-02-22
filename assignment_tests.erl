@@ -57,6 +57,17 @@ Triangle = {triangle,{0,0},S,2,S},
 between(Height,S-0.0001,S+0.0001),
 between(Width,S-0.0001,S+0.0001).
 
+enclose_triangle3_test() ->
+Triangle1 = {triangle,{0,0},3,4,6},
+Triangle2 = {triangle,{0,0},6,4,3},
+Triangle3 = {triangle,{0,0},4,3,6},
+{rectangle,{0,0},Height1,Width1} = assignment:enclose(Triangle1),
+{rectangle,{0,0},Height2,Width2} = assignment:enclose(Triangle2),
+{rectangle,{0,0},Height3,Width3} = assignment:enclose(Triangle3),
+between(Height1,Height2-0.0001,Height2+0.0001),
+between(Width1,Width2-0.0001,Width2+0.0001),
+between(Width1,Width3-0.0001,Width3+0.0001).
+
 
 % bits tests
 bits_test() ->
